@@ -1,4 +1,2 @@
 django==3.2.8
 djangorestframework==3.13.1
-django-countries==7.2.1
-
