@@ -14,5 +14,4 @@ RUN make collectstatic
 
 RUN chown -R www-data:www-data /app
 EXPOSE 8020
-STOPSIGNAL SIGTERM
 CMD export PYTHONPATH=${PYTHONPATH}:/app && make run_gunicorn
