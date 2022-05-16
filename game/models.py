@@ -2,6 +2,7 @@ import uuid
 
 from django.db.models import Model, CharField, TextChoices, UUIDField
 from django.utils.translation import gettext_lazy as _
+from typing import List, NoReturn
 
 from mastermind.settings import MAX_NUMBER_OF_GUESSES, GAME_CODE_LENGTH
 
@@ -26,11 +27,15 @@ class Game(Model):
         return MAX_NUMBER_OF_GUESSES - self.tries
 
     @property
-    def is_over(self):
+    def is_over(self) -> bool:
         return self.status != GameStatus.PLAYING
 
-    def check_game_status(self):
-        if len(self.guesses.filter(black_pegs=GAME_CODE_LENGTH)) > 0:
+    @property
+    def _correct_guesses(self) -> List:
+        return self.guesses.filter(black_pegs=GAME_CODE_LENGTH)
+
+    def check_game_status(self) -> NoReturn:
+        if len(self._correct_guesses) > 0:
             self.status = GameStatus.PLAYER_WON
         elif self.tries_left == 0:
             self.status = GameStatus.PLAYER_LOST
