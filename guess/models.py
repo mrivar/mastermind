@@ -3,13 +3,14 @@ from django.db.models import Model, CharField, ForeignKey, CASCADE, IntegerField
 from typing import Tuple
 
 from game.models import Game
+from mastermind.config import GAME_CODE_LENGTH
 
 
 class Guess(Model):
-    code = CharField(max_length=4)
+    code = CharField(max_length=GAME_CODE_LENGTH)
     game = ForeignKey(to=Game, on_delete=CASCADE, related_name='guesses')
-    black_pegs = IntegerField(validators=[MaxValueValidator(4), MinValueValidator(0)])
-    white_pegs = IntegerField(validators=[MaxValueValidator(4), MinValueValidator(0)])
+    black_pegs = IntegerField(validators=[MaxValueValidator(GAME_CODE_LENGTH), MinValueValidator(0)])
+    white_pegs = IntegerField(validators=[MaxValueValidator(GAME_CODE_LENGTH), MinValueValidator(0)])
 
     def compute_pegs(self) -> Tuple[int, int]:
         """
