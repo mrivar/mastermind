@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from rest_framework import mixins
+from rest_framework.viewsets import GenericViewSet
 
-# Create your views here.
+from guess.models import Guess
+from guess.serializers import GuessSerializer
+
+
+class GuessViewSet(mixins.CreateModelMixin,
+                   GenericViewSet):
+    queryset = Guess.objects.all()
+    serializer_class = GuessSerializer
+

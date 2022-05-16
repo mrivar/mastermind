@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include('game.urls')),
+    path('', include('guess.urls')),
 ]
