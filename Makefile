@@ -23,7 +23,11 @@ migrations:
 	python manage.py makemigrations
 	python manage.py migrate
 
+remove_database:
+	@echo "Removing local database..."
+	rm db.sqlite3
+	rm -r */migrations/*
+
 run:
 	@echo "Running application..."
 	python manage.py runserver
-
