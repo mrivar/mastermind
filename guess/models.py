@@ -4,6 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Model, CharField, ForeignKey, CASCADE, IntegerField, UUIDField
 from typing import Tuple
 
+from game.exceptions import GameOverException
 from game.models import Game
 from mastermind.settings import GAME_CODE_LENGTH
 
@@ -71,5 +72,10 @@ class Guess(Model):
         return white_pegs
 
     def save(self, *args, **kwargs):
+        if self.game.is_over:
+            raise GameOverException
+
         self.black_pegs, self.white_pegs = self.compute_pegs()
-        return super().save(*args, **kwargs)
+        instance = super().save(*args, **kwargs)
+        self.game.check_game_status()
+        return instance
