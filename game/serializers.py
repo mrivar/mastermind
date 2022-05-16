@@ -5,6 +5,9 @@ from guess.serializers import GuessSerializer
 
 
 class GameSerializer(ModelSerializer):
+    """
+    Game serializer to define API requests.
+    """
     guesses = GuessSerializer(many=True, read_only=True)
 
     class Meta:

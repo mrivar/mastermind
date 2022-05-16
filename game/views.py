@@ -9,5 +9,8 @@ class GameViewSet(mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
                   mixins.ListModelMixin,
                   GenericViewSet):
+    """
+    Game API views. Allow GET and POST requests.
+    """
     queryset = Game.objects.all()
     serializer_class = GameSerializer

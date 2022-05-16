@@ -4,6 +4,9 @@ from guess.models import Guess
 
 
 class GuessSerializer(ModelSerializer):
+    """
+    Guess serializer to define API requests.
+    """
 
     class Meta:
         model = Guess
