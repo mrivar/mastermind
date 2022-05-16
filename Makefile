@@ -28,6 +28,10 @@ remove_database:
 	rm db.sqlite3
 	rm -r */migrations/*
 
+collectstatic:
+	@echo "Collecting static files..."
+	python manage.py collectstatic
+
 run:
 	@echo "Running application..."
 	python manage.py runserver
