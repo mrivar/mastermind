@@ -5,7 +5,7 @@ from django.db.models import Model, CharField, ForeignKey, CASCADE, IntegerField
 from typing import Tuple
 
 from game.models import Game
-from mastermind.config import GAME_CODE_LENGTH
+from mastermind.settings import GAME_CODE_LENGTH
 
 
 class Guess(Model):

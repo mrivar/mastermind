@@ -3,7 +3,7 @@ import uuid
 from django.db.models import Model, CharField, TextChoices, UUIDField
 from django.utils.translation import gettext_lazy as _
 
-from mastermind.config import MAX_NUMBER_OF_GUESSES, GAME_CODE_LENGTH
+from mastermind.settings import MAX_NUMBER_OF_GUESSES, GAME_CODE_LENGTH
 
 
 class GameStatus(TextChoices):
