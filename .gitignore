@@ -3,3 +3,5 @@
 *pycache*
 *y.pyc
 
+db.sqlite3
+*/migrations/*
