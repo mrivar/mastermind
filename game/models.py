@@ -1,4 +1,6 @@
-from django.db.models import Model, CharField, TextChoices
+import uuid
+
+from django.db.models import Model, CharField, TextChoices, UUIDField
 from django.utils.translation import gettext_lazy as _
 
 from mastermind.config import MAX_NUMBER_OF_GUESSES, GAME_CODE_LENGTH
@@ -11,6 +13,7 @@ class GameStatus(TextChoices):
 
 
 class Game(Model):
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = CharField(max_length=GAME_CODE_LENGTH)
     status = CharField(max_length=1, choices=GameStatus.choices, default=GameStatus.PLAYING)
 

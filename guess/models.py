@@ -1,5 +1,7 @@
+import uuid
+
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import Model, CharField, ForeignKey, CASCADE, IntegerField
+from django.db.models import Model, CharField, ForeignKey, CASCADE, IntegerField, UUIDField
 from typing import Tuple
 
 from game.models import Game
@@ -7,6 +9,7 @@ from mastermind.config import GAME_CODE_LENGTH
 
 
 class Guess(Model):
+    id = UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = CharField(max_length=GAME_CODE_LENGTH)
     game = ForeignKey(to=Game, on_delete=CASCADE, related_name='guesses')
     black_pegs = IntegerField(validators=[MaxValueValidator(GAME_CODE_LENGTH), MinValueValidator(0)])
