@@ -22,6 +22,10 @@ docker:
 	@echo "Building Docker image..."
 	docker build . -t mastermind
 
+run_docker_server:
+	@echo "Running the Docker container..."
+	docker run -it -p 8020:8020 mastermind
+
 migrations:
 	@echo "Applying database migrations..."
 	python manage.py makemigrations
