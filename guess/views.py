@@ -1,3 +1,4 @@
+"""Guess views module"""
 from rest_framework import mixins
 from rest_framework.viewsets import GenericViewSet
 
@@ -12,4 +13,3 @@ class GuessViewSet(mixins.CreateModelMixin,
     """
     queryset = Guess.objects.all()
     serializer_class = GuessSerializer
-

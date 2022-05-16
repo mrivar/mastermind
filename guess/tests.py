@@ -1,3 +1,4 @@
+"""Guess tests module"""
 from unittest.mock import MagicMock, patch, PropertyMock
 
 from django.test import TestCase
@@ -8,6 +9,9 @@ from guess.models import Guess
 
 
 class GuessTestCase(TestCase):
+    """
+     Class to test the guess model
+     """
     GAME_CODE = 'ABCD'
     # Guesses in the format (guess code, black pegs, white pegs)
     GUESSES = [('ABCD', 4, 0), ('BCAA', 0, 3), ('DCBA', 0, 4), ('ACBB', 1, 2), ('EFCA', 1, 1),

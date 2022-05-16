@@ -1,11 +1,12 @@
+"""Game urls module"""
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from game.views import GameViewSet
 
-router = DefaultRouter()
-router.register(r'game', GameViewSet, basename='game')
+ROUTER = DefaultRouter()
+ROUTER.register(r'game', GameViewSet, basename='game')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(ROUTER.urls)),
 ]

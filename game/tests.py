@@ -1,3 +1,4 @@
+"""Game views module"""
 from unittest.mock import MagicMock, patch, PropertyMock
 
 from django.test import TestCase
@@ -6,6 +7,9 @@ from game.models import Game, GameStatus
 
 
 class GameTestCase(TestCase):
+    """
+    Class to test the game model
+    """
     GAME_CODE = 'ABCD'
 
     def setUp(self):

@@ -1,8 +1,9 @@
+"""Guess models module"""
 import uuid
+from typing import Tuple
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db.models import Model, CharField, ForeignKey, CASCADE, IntegerField, UUIDField
-from typing import Tuple
 
 from game.exceptions import GameOverException
 from game.models import Game
@@ -43,7 +44,7 @@ class Guess(Model):
         new_secret_code = dict()
         new_guess_code = dict()
         black_pegs = 0
-        for i, (code, guess) in enumerate(zip(secret_code, guess_code)):
+        for code, guess in zip(secret_code, guess_code):
             if code == guess:
                 black_pegs += 1
             else:
@@ -76,6 +77,5 @@ class Guess(Model):
             raise GameOverException
 
         self.black_pegs, self.white_pegs = self.compute_pegs()
-        instance = super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
         self.game.check_game_status()
-        return instance

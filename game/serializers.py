@@ -1,3 +1,4 @@
+"""Game serializers module"""
 from rest_framework.serializers import ModelSerializer
 
 from game.models import Game

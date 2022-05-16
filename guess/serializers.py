@@ -1,3 +1,4 @@
+"""Guess serializers module"""
 from rest_framework.serializers import ModelSerializer
 
 from guess.models import Guess

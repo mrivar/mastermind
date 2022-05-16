@@ -4,7 +4,11 @@ run_with_migrations: migrations run
 
 libs:
 	@echo "Installing libraries..."
-	pip install --progress-bar emoji --no-cache-dir -r requirements.txt
+	pip install --progress-bar on --no-cache-dir -r requirements.txt
+
+style:
+	@echo "Analysing coding style..."
+	pylint-fail-under --ignore=migrations --django-settings-module=mastermind.settings --fail_under 8.00 mastermind game guess
 
 test:
 	@echo "Performing Unit & Integration tests..."

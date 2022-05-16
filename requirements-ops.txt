@@ -1,0 +1,6 @@
+# Operational requirements
+pylint==2.4.4
+pylint-fail-under==0.3.0
+pylint-django==2.5.3
+astroid==2.9.0
+coverage==4.5.3

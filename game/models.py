@@ -1,3 +1,4 @@
+"""Game models module"""
 import uuid
 
 from django.db.models import Model, CharField, TextChoices, UUIDField
