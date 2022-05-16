@@ -16,7 +16,7 @@ coverage:
 
 docker:
 	@echo "Building Docker image..."
-	@echo "not implemented yet"
+	docker build . -t mastermind
 
 migrations:
 	@echo "Applying database migrations..."
@@ -33,5 +33,9 @@ collectstatic:
 	python manage.py collectstatic
 
 run:
-	@echo "Running application..."
+	@echo "Running application locally..."
 	python manage.py runserver
+
+run_gunicorn:
+	@echo "Running gunicorn server..."
+	(gunicorn mastermind.wsgi --user www-data --bind 0.0.0.0:8010 --workers 3) & nginx -g "daemon off;"
