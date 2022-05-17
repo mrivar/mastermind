@@ -31,11 +31,16 @@ make run_docker_server # Run docker server
 
 ### Call the API
 
+The route to the api will be `localhost:8000` or `localhost:8020` whne run locally,
+depending on whether you used the django default server or the docker server respectively.
+For these examples we will stick to `localhost:8000`.
+
+You can check the whole app documentation in `localhost:8000/api/doc` as a swagger. 
 You can call the API using httpie:
 ```
 pip install httpie
 ```
-You can create a game using:
+You could create a game using:
 ```
 http POST http://localhost:8000/game/ code='ABCD'
 ```
